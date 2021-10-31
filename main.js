@@ -1,6 +1,9 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const { autoUpdater } = require('electron-updater');
 
+autoUpdater.autoDownload = false;
+autoUpdater.autoInstallOnAppQuit = false;
+
 let mainWindow;
 
 function createWindow () {
@@ -57,5 +60,5 @@ ipcMain.on('download_update', () => {
 });
 
 ipcMain.on('restart_app', () => {
-    autoUpdater.quitAndInstall();
+    autoUpdater.quitAndInstall(true, true);
 });
