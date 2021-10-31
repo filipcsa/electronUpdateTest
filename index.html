@@ -84,10 +84,12 @@
     
     function restartApp() {
         ipcRenderer.send('restart_app');
+        console.log("App should be restarted");
     }
 
     function downloadNewVersion() {
         ipcRenderer.send('download_update');
+        closeNotification();
     }
   </script>
 </body>

@@ -52,6 +52,7 @@ autoUpdater.on('update-downloaded', () => {
 });
 
 ipcMain.on('download_update', () => {
+    console.log("Downloading update");
     autoUpdater.downloadUpdate();
 });
 
