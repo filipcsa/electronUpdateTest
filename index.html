@@ -39,12 +39,14 @@
     <button id="restart-button" onClick="restartApp()" class="hidden">
       Restart
     </button>
+    <button id="download-button" onClick="downloadNewVersion()" class="hidden">
+      Download
+    </button>
   </div>
 
   <script>
     function displayAppVersion() {
         var v = document.querySelector("#version");
-        console.log("HELLO BIATCH");
     }
 
     displayAppVersion();
@@ -60,11 +62,13 @@
     const notification = document.getElementById('notification');
     const message = document.getElementById('message');
     const restartButton = document.getElementById('restart-button');
+    const downloadButton = document.getElementById('download-button');
 
     ipcRenderer.on('update_available', () => {
         ipcRenderer.removeAllListeners('update_available');
-        message.innerText = 'A new update is available. Downloading now...';
+        message.innerText = 'A new update is available. Do you wish to download it?';
         notification.classList.remove('hidden');
+        downloadButton.classList.remove('hidden');
     });
 
     ipcRenderer.on('update_downloaded', () => {
@@ -80,6 +84,10 @@
     
     function restartApp() {
         ipcRenderer.send('restart_app');
+    }
+
+    function downloadNewVersion() {
+        ipcRenderer.send('download_update');
     }
   </script>
 </body>
