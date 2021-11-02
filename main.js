@@ -4,6 +4,12 @@ var config = require('./config');
 
 autoUpdater.autoDownload = config.autoDownload;
 autoUpdater.autoInstallOnAppQuit = config.autoInstallOnAppQuit;
+autoUpdater.requestHeaders = { "X-JFrog-Art-Api": "AKCp8k8PpjFEUBXyNJ9DfFr2EgYZ19cekcQ4j5n1Hd2dLQVgZtJfQuxWZpkguWoH2i3zHhfqv" };
+autoUpdater.setFeedURL({
+  provider: "generic",
+  channel: "latest",
+  url: "http://localhost:8082/artifactory/example-repo-local/"
+});
 
 let mainWindow;
 

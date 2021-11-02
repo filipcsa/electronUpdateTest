@@ -18,8 +18,13 @@
   "dependencies": {
     "electron-updater": "^4.3.9"
   },
-  "repository": {
-    "type" : "git",
-    "url" : "https://github.com/filipcsa/electronUpdateTest.git"
+  "build": {
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "http://localhost:8082/artifactory/example-repo-local/"
+      }
+    ],
+    "appId": "com.example.ElectronAutoUpdate"
   }
 }
