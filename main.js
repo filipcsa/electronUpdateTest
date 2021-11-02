@@ -1,8 +1,9 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const { autoUpdater } = require('electron-updater');
+var config = require('./config');
 
-autoUpdater.autoDownload = false;
-autoUpdater.autoInstallOnAppQuit = false;
+autoUpdater.autoDownload = config.autoDownload;
+autoUpdater.autoInstallOnAppQuit = config.autoInstallOnAppQuit;
 
 let mainWindow;
 
